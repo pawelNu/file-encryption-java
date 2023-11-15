@@ -1,4 +1,4 @@
-package com.pawelnu.fileencryption;
+package com.pawelnu.fileencryption.config;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
