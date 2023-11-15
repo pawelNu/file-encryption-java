@@ -19,5 +19,13 @@ public class FileLogic {
             throw new RuntimeException(e);
         }
 
+        try {
+            ConfigParser configParser = new ConfigParser();
+            configParser.loadConfigEncryptAndSaveToFile("config.properties");
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 }
