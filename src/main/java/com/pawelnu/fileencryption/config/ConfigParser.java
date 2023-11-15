@@ -7,12 +7,28 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.pawelnu.fileencryption.config.ConfigEncryptor.encrypt;
+
 public class ConfigParser {
 
     private final Map<String, String> configMap;
+    private final String password = "superSecretPassword";
 
     public ConfigParser() {
         configMap = new HashMap<>();
+    }
+
+    public void loadConfigEncryptAndSaveToFile(String filePath) throws IOException {
+        String fileContent = loadFileContent(filePath);
+        try {
+            String encryptedConfig = encrypt(fileContent, password);
+            System.out.println("encryptedConfig");
+            System.out.println(encryptedConfig);
+            FileWriter.writeStringToFile(encryptedConfig, "config.properties.encrypted");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void loadConfig(String filePath) throws IOException {
