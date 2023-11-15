@@ -1,9 +1,9 @@
-package com.pawelnu.fileencryption;
+package com.pawelnu.fileencryption.logic;
 
-import static com.pawelnu.fileencryption.ConfigEncryptor.decrypt;
-import static com.pawelnu.fileencryption.ConfigEncryptor.encrypt;
+import static com.pawelnu.fileencryption.config.ConfigEncryptor.decrypt;
+import static com.pawelnu.fileencryption.config.ConfigEncryptor.encrypt;
 
-public class ApplicationLogic {
+public class StringLogic {
     public static void main(String[] args) {
 
         String password = "superSecretPassword";
