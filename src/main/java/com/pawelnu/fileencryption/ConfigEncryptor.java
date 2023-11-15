@@ -34,4 +34,11 @@ public class ConfigEncryptor {
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
+    public static String decrypt(String encryptedInput, String password) throws Exception {
+        Cipher cipher = Cipher.getInstance(TRANSFORMATION, PROVIDER);
+        cipher.init(Cipher.DECRYPT_MODE, generateKey(password));
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedInput));
+        return new String(decryptedBytes);
+    }
+
 }
