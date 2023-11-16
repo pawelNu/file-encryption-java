@@ -3,8 +3,6 @@ package com.pawelnu.fileencryption.logic;
 import com.pawelnu.fileencryption.config.ConfigParser;
 import com.pawelnu.fileencryption.config.ConfigProperties;
 
-import java.io.IOException;
-
 public class FileLogic {
     public static void main(String[] args) {
 

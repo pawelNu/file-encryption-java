@@ -6,7 +6,7 @@ import com.pawelnu.fileencryption.console.ConsoleInterface;
 public class Main {
     public static void main(String[] args) {
 
-//        ApplicationLogic.main(args);
+//        FileLogic.main(args);
 
         ConsoleInterface.applicationInterface();
     }
