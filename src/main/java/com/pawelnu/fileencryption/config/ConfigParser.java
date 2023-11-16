@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.pawelnu.fileencryption.config.ConfigEncryptor.decrypt;
 import static com.pawelnu.fileencryption.config.ConfigEncryptor.encrypt;
 
 public class ConfigParser {
@@ -22,13 +23,18 @@ public class ConfigParser {
         String fileContent = loadFileContent(filePath);
         try {
             String encryptedConfig = encrypt(fileContent, password);
-            System.out.println("encryptedConfig");
-            System.out.println(encryptedConfig);
             FileWriter.writeStringToFile(encryptedConfig, "config.properties.encrypted");
+            System.out.println("Created file: config.properties.encrypted.");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void loadEncryptedConfig(String filePath) throws Exception {
+        String fileContent = loadFileContent(filePath);
+        String decryptedConfig = decrypt(fileContent, password);
+        parseConfig(decryptedConfig);
     }
 
     public void loadConfig(String filePath) throws IOException {
