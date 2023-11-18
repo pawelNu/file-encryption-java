@@ -28,3 +28,4 @@ replay_pid*
 /fileEncryption-java-11-1.0.0.jar
 /keystorepassword.txt
 /fileEncryption.jks
+/.env
