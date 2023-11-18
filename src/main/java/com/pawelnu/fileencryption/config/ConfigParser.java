@@ -1,5 +1,7 @@
 package com.pawelnu.fileencryption.config;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -13,7 +15,6 @@ import static com.pawelnu.fileencryption.config.ConfigEncryptor.encrypt;
 public class ConfigParser {
 
     private final Map<String, String> configMap;
-    private final String password = "superSecretPassword";
 
     public ConfigParser() {
         configMap = new HashMap<>();
@@ -22,7 +23,8 @@ public class ConfigParser {
     public void loadConfigEncryptAndSaveToFile(String filePath) throws IOException {
         String fileContent = loadFileContent(filePath);
         try {
-            String encryptedConfig = encrypt(fileContent, password);
+            Dotenv dotenv = Dotenv.configure().load();
+            String encryptedConfig = encrypt(fileContent, dotenv.get("PASSWORD"));
             FileWriter.writeStringToFile(encryptedConfig, "config.properties.encrypted");
             System.out.println("Created file: config.properties.encrypted.");
         } catch (Exception e) {
@@ -33,7 +35,8 @@ public class ConfigParser {
 
     public void loadEncryptedConfig(String filePath) throws Exception {
         String fileContent = loadFileContent(filePath);
-        String decryptedConfig = decrypt(fileContent, password);
+        Dotenv dotenv = Dotenv.configure().load();
+        String decryptedConfig = decrypt(fileContent, dotenv.get("PASSWORD"));
         parseConfig(decryptedConfig);
     }
 
@@ -46,7 +49,7 @@ public class ConfigParser {
         String[] lines = configContent.split("\n");
 
         for (String line : lines) {
-            String[] keyValue = line.split("=", 2); // Podział tylko na pierwszym znaku "="
+            String[] keyValue = line.split("=", 2);
             if (keyValue.length == 2) {
                 String key = keyValue[0].trim();
                 String value = keyValue[1].trim();
