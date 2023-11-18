@@ -44,24 +44,24 @@ public class FileLogic {
 //        }
 
         // reading the encrypted file and adding values to ConfigProperties class
-        try {
-            ConfigParser configParser = new ConfigParser();
-            configParser.loadEncryptedConfig("config.properties.encrypted");
-
-            String valueTest = configParser.getConfigValue("test.test");
-            String valueTest2 = configParser.getConfigValue("test.test2");
-
-            ConfigProperties configProperties = ConfigProperties.getInstance();
-            configProperties.setTestTest(valueTest);
-            configProperties.setTestTest2(valueTest2);
-
-            System.out.println(configProperties);
-            System.out.println(configProperties.getTestTest());
-            System.out.println(configProperties.getTestTest2());
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+//        try {
+//            ConfigParser configParser = new ConfigParser();
+//            configParser.loadEncryptedConfig("config.properties.encrypted");
+//
+//            String valueTest = configParser.getConfigValue("test.test");
+//            String valueTest2 = configParser.getConfigValue("test.test2");
+//
+//            ConfigProperties configProperties = ConfigProperties.getInstance();
+//            configProperties.setTestTest(valueTest);
+//            configProperties.setTestTest2(valueTest2);
+//
+//            System.out.println(configProperties);
+//            System.out.println(configProperties.getTestTest());
+//            System.out.println(configProperties.getTestTest2());
+//
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
 
     }
 }
