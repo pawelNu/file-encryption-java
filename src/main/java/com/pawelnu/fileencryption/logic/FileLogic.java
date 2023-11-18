@@ -1,8 +1,5 @@
 package com.pawelnu.fileencryption.logic;
 
-import com.pawelnu.fileencryption.config.ConfigParser;
-import com.pawelnu.fileencryption.config.ConfigProperties;
-
 public class FileLogic {
     public static void main(String[] args) {
 
