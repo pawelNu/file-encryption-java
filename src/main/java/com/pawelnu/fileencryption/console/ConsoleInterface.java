@@ -14,7 +14,10 @@ public class ConsoleInterface {
         while (true) {
             System.out.println();
             System.out.println("Welcome to the File Encryption Console App!");
-            System.out.println("To encrypt prepare config.properties file in the same directory as application.");
+            System.out.println("To encrypt prepare: config.properties file in the same directory as application.");
+            System.out.println("- config.properties file,");
+            System.out.println("- .env file with encryption password");
+            System.out.println("in the same directory as application.");
             System.out.println("1. Encrypt File");
             System.out.println("2. Exit");
             System.out.print("Please choose an option (1 or 2): ");
