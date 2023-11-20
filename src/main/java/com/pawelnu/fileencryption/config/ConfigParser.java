@@ -1,6 +1,7 @@
 package com.pawelnu.fileencryption.config;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import io.github.cdimascio.dotenv.DotenvException;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -27,6 +28,15 @@ public class ConfigParser {
             String encryptedConfig = encrypt(fileContent, dotenv.get("PASSWORD"));
             FileWriter.writeStringToFile(encryptedConfig, "config.properties.encrypted");
             System.out.println("Created file: config.properties.encrypted.");
+        } catch (DotenvException e) {
+            System.out.println();
+            System.out.println(e.getMessage());
+            System.out.println("Creating new .env file...");
+            FileWriter.writeStringToFile("PASSWORD=", ".env");
+            System.out.println(".env file created.");
+            System.out.println("Complete the PASSWORD property in the file.");
+            System.out.println("Exiting the application.");
+            System.exit(0);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
