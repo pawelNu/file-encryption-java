@@ -9,8 +9,6 @@
 
     <properties>
         <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
         <finalName>fileEncryption-java-${java.version}-${project.version}</finalName>
     </properties>
 
@@ -23,7 +21,7 @@
     </dependencies>
 
     <build>
-        <finalName>fileEncryption-java-${maven.compiler.source}-${project.version}</finalName>
+        <finalName>${finalName}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
